@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration file for LogBack (slf4J implementation)
+See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<configuration scan="true" scanPeriod="30 seconds" debug="false" >
+    <contextName>logback</contextName>
+    <property name="logback.level" value="INFO" />
+    <property name="logback.pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p - %m%n" />
+
+    <!-- %d [%t] %-5p %c.%M[%L] - %m%n -->
+    <!-- %d{yyyy-MM-dd HH:mm:ss} [%thread]  %-5level %logger{50} - %msg%n -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${logback.pattern}</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.springframework" level="${logback.level}"/>
+    <logger name="com.opensymphony" level="${logback.level}"/>
+    <logger name="org.apache" level="${logback.level}"/>
+    <logger name="java.sql" level="${logback.level}"/>
+
+    <root level="${logback.level}">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

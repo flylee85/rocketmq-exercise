@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="aceMqProducer" class="com.zhihao.miao.common.rocketmq.AceMQProducer" init-method="init" >
+        <property name="groupName" value="PayProducerGroup"/>
+        <property name="namesrvAddr" value="192.168.1.122:9876"/>
+    </bean>
+</beans>

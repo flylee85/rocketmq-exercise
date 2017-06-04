@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cancelOrderProcessor" class="com.zhihao.miao.coupon.mq.processor.CancelOrderProcessor"/>
+    <bean id="orderConsumer" class="com.zhihao.miao.common.rocketmq.AceMQConsumer" init-method="init">
+        <property name="groupName" value="coupon_orderTopic_cancel_group"/>
+        <property name="topic" value="orderTopic"/>
+        <property name="tag" value="cancel"/>
+        <property name="namesrvAddr" value="192.168.1.122:9876"/>
+        <property name="processor" ref="cancelOrderProcessor"/>
+    </bean>
+
+</beans>
